@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Car;
 use App\Models\Owners;
 use Illuminate\Http\Request;
 
@@ -12,9 +13,10 @@ class OwnersController extends Controller
      */
     public function index()
     {
-        $owners = Owners::all();
+        $owners = Owners::with('cars')->get();
         return view('owners.index', compact('owners'));
     }
+
 
     /**
      * Show the form for creating a new resource.
@@ -42,7 +44,7 @@ class OwnersController extends Controller
 
     /**
      * Display the specified resource.
-     */
+    2 */
     public function show(Owners $owner)
     {
         //
@@ -76,6 +78,7 @@ class OwnersController extends Controller
      */
     public function destroy(Owners $owner)
     {
+        $owner->cars()->delete();
         $owner->delete();
         return redirect()->route('owners.index');
     }

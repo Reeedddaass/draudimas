@@ -37,8 +37,8 @@
                     </div>
 
                     <div class="d-flex justify-content-between">
-                        <a href="{{ route('owners.index') }}" class="btn btn-secondary">Cancel</a>
                         <button type="submit" class="btn btn-success">Add Owner</button>
+                        <a href="{{ route('owners.index') }}" class="btn btn-secondary">Cancel</a>
                     </div>
                 </form>
             </div>
