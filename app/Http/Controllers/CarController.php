@@ -6,6 +6,7 @@ use App\Models\Car;
 use App\Models\Owners;
 use Illuminate\Http\Request;
 
+#[Middleware('auth')]
 class CarController extends Controller
 {
     /**

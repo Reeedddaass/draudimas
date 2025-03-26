@@ -14,7 +14,11 @@
                     <th>Email</th>
                     <th>Address</th>
                     <th>Car</th>
-                    <th> </th>
+                    @auth
+                        @if(auth()->user()->role === 'editor')
+                            <th> </th>
+                        @endif
+                    @endauth
                 </tr>
                 </thead>
                 <tbody>
@@ -30,40 +34,53 @@
                                     @foreach($owner->cars as $car)
                                         <div class="d-flex align-items-center">
                                             {{ $car->brand }} {{ $car->model }} ({{ $car->reg_number }})
+                                            @auth
+                                                @if(auth()->user()->role === 'editor')
 
-                                            <a href="{{ route('cars.edit', $car->id) }}" class="btn btn-warning btn-sm mx-2">Edit</a>
+                                                    <a href="{{ route('cars.edit', $car->id) }}" class="btn btn-warning btn-sm mx-2">Edit</a>
 
-                                            <form action="{{ route('cars.destroy', $car->id) }}" method="POST">
-                                                @csrf
-                                                @method('DELETE')
-                                                <button type="submit" class="btn btn-danger btn-sm">Remove</button>
-                                            </form>
+                                                    <form action="{{ route('cars.destroy', $car->id) }}" method="POST">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <button type="submit" class="btn btn-danger btn-sm">Remove</button>
+                                                    </form>
+                                                @endif
+                                            @endauth
                                         </div>
                                     @endforeach
                                 @else
                                     <span class="text-muted">No car assigned</span>
                                 @endif
                             </td>
-                            <td class="d-flex">
-                                <a href="{{ route('owners.edit', $owner->id) }}" class="btn btn-primary btn-sm mx-1">Edit User</a>
+                            @auth
+                                @if(auth()->user()->role === 'editor')
+                                    <td class="d-flex">
+                                        <a href="{{ route('owners.edit', $owner->id) }}" class="btn btn-primary btn-sm mx-1">Edit User</a>
 
-                                <form action="{{ route('owners.destroy', $owner->id) }}" method="POST">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" class="btn btn-danger btn-sm mx-1">Delete User</button>
-                                </form>
-                            </td>
-                            <td class="d-flex">
-                                <a href="{{ route('cars.create', ['owner_id' => $owner->id]) }}" class="btn btn-success btn-sm mx-1">
-                                    Assign Car
-                                </a>
-                            </td>
+                                        <form action="{{ route('owners.destroy', $owner->id) }}" method="POST">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-danger btn-sm mx-1">Delete User</button>
+                                        </form>
+                                    </td>
+                                    <td class="d-flex">
+                                        <a href="{{ route('cars.create', ['owner_id' => $owner->id]) }}" class="btn btn-success btn-sm mx-1">
+                                            Assign Car
+                                        </a>
+                                    </td>
+                                @endif
+                            @endauth
                         </tr>
                     @endforeach
                 </tbody>
             </table>
 
-            <a href="{{route('owners.create')}}" class="btn btn-success">Add New Owner</a>
+            @auth
+                @if(auth()->user()->role === 'editor')
+                    <a href="{{route('owners.create')}}" class="btn btn-success">Add New Owner</a>
+                @endif
+            @endauth
+            
             <a href="{{ route('cars.index') }}" class="btn btn-primary">Cars List</a>
 
         </div>
