@@ -33,4 +33,8 @@
         <a href="{{ route('owners.index') }}" class="btn btn-primary">Go Back</a>
     </div>
 
+    <div class="container text-center mt-5 mb-3 text-muted small">
+        [[FooterText]]
+    </div>
+
 @endsection

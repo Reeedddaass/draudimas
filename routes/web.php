@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\OwnersController;
 use App\Http\Controllers\CarController;
+use App\Http\Controllers\ShortCodeController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -28,3 +29,4 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('cars', CarController::class)->only(['index', 'show']);
 });
 
+Route::resource('shortcodes', ShortCodeController::class);

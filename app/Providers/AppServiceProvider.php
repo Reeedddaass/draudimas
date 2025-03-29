@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Http\Middleware\RoleMiddleware;
+use App\Http\Middleware\ReplaceShortCodes;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
 
@@ -22,5 +23,6 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         Route::aliasMiddleware('role', RoleMiddleware::class);
+        app('router')->pushMiddlewareToGroup('web', \App\Http\Middleware\ReplaceShortCodes::class);
     }
 }

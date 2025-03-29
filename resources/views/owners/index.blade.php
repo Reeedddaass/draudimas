@@ -2,6 +2,10 @@
 
 @section('content')
 
+    <div class="container py-4">
+        <h1 class="mb-3 fw-bold text-primary">[[Greetings]]</h1>
+    </div>
+
     <div class="container mt-4">
         <div class="table-responsive">
             <h2 class="mb-3">Owners List</h2>
@@ -80,10 +84,13 @@
                     <a href="{{route('owners.create')}}" class="btn btn-success">Add New Owner</a>
                 @endif
             @endauth
-            
-            <a href="{{ route('cars.index') }}" class="btn btn-primary">Cars List</a>
 
+            <a href="{{ route('cars.index') }}" class="btn btn-primary">Cars List</a>
         </div>
+    </div>
+
+    <div class="container text-center mt-5 mb-3 text-muted small">
+        [[FooterText]]
     </div>
 
 @endsection
