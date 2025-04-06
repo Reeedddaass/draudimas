@@ -67,6 +67,14 @@
                                 </div>
                             </li>
                         @endguest
+
+                        <li class="nav-item ms-2">
+                            <select class="form-select form-select-sm" style="border: none; background: transparent;" onchange="window.location.href=this.value;">
+                                <option value="{{ route('lang.switch', ['locale' => 'en']) }}" {{ app()->getLocale() === 'en' ? 'selected' : '' }}>EN</option>
+                                <option value="{{ route('lang.switch', ['locale' => 'lt']) }}" {{ app()->getLocale() === 'lt' ? 'selected' : '' }}>LT</option>
+                            </select>
+                        </li>
+
                     </ul>
                 </div>
             </div>

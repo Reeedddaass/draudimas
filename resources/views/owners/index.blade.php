@@ -8,16 +8,16 @@
 
     <div class="container mt-4">
         <div class="table-responsive">
-            <h2 class="mb-3">Owners List</h2>
+            <h2 class="mb-3">{{ __('Owners List') }}</h2>
             <table class="table table-striped table-hover table-bordered">
                 <thead>
                 <tr class="table-dark">
-                    <th>Name</th>
-                    <th>Surname</th>
-                    <th>Phone</th>
-                    <th>Email</th>
-                    <th>Address</th>
-                    <th>Car</th>
+                    <th>{{ __('Name') }}</th>
+                    <th>{{ __('Surname') }}</th>
+                    <th>{{ __('Phone') }}</th>
+                    <th>{{ __('Email') }}</th>
+                    <th>{{ __('Address') }}</th>
+                    <th>{{ __('Car') }}</th>
                     @auth
                         @if(auth()->user()->role === 'editor')
                             <th> </th>
@@ -41,35 +41,35 @@
                                             @auth
                                                 @if(auth()->user()->role === 'editor')
 
-                                                    <a href="{{ route('cars.edit', $car->id) }}" class="btn btn-warning btn-sm mx-2">Edit</a>
+                                                    <a href="{{ route('cars.edit', $car->id) }}" class="btn btn-warning btn-sm mx-2">{{ __('Edit') }}</a>
 
                                                     <form action="{{ route('cars.destroy', $car->id) }}" method="POST">
                                                         @csrf
                                                         @method('DELETE')
-                                                        <button type="submit" class="btn btn-danger btn-sm">Remove</button>
+                                                        <button type="submit" class="btn btn-danger btn-sm">{{ __('Remove') }}</button>
                                                     </form>
                                                 @endif
                                             @endauth
                                         </div>
                                     @endforeach
                                 @else
-                                    <span class="text-muted">No car assigned</span>
+                                    <span class="text-muted">{{ __('No car assigned') }}</span>
                                 @endif
                             </td>
                             @auth
                                 @if(auth()->user()->role === 'editor')
                                     <td class="d-flex">
-                                        <a href="{{ route('owners.edit', $owner->id) }}" class="btn btn-primary btn-sm mx-1">Edit User</a>
+                                        <a href="{{ route('owners.edit', $owner->id) }}" class="btn btn-primary btn-sm mx-1">{{ __('Edit User') }}</a>
 
                                         <form action="{{ route('owners.destroy', $owner->id) }}" method="POST">
                                             @csrf
                                             @method('DELETE')
-                                            <button type="submit" class="btn btn-danger btn-sm mx-1">Delete User</button>
+                                            <button type="submit" class="btn btn-danger btn-sm mx-1">{{ __('Delete User') }}</button>
                                         </form>
                                     </td>
                                     <td class="d-flex">
                                         <a href="{{ route('cars.create', ['owner_id' => $owner->id]) }}" class="btn btn-success btn-sm mx-1">
-                                            Assign Car
+                                            {{ __('Assign Car') }}
                                         </a>
                                     </td>
                                 @endif
@@ -81,11 +81,11 @@
 
             @auth
                 @if(auth()->user()->role === 'editor')
-                    <a href="{{route('owners.create')}}" class="btn btn-success">Add New Owner</a>
+                    <a href="{{route('owners.create')}}" class="btn btn-success">{{ __('Add New Owner') }}</a>
                 @endif
             @endauth
 
-            <a href="{{ route('cars.index') }}" class="btn btn-primary">Cars List</a>
+            <a href="{{ route('cars.index') }}" class="btn btn-primary">{{ __('Cars List') }}</a>
         </div>
     </div>
 

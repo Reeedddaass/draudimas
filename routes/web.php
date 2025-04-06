@@ -30,3 +30,13 @@ Route::middleware(['auth'])->group(function () {
 });
 
 Route::resource('shortcodes', ShortCodeController::class);
+
+use Illuminate\Support\Facades\Session;
+
+Route::get('/lang/{locale}', function ($locale) {
+    if (in_array($locale, ['en', 'lt'])) {
+        Session::put('locale', $locale);
+    }
+    return redirect()->back();
+})->name('lang.switch');
+

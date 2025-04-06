@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use App\Http\Middleware\RoleMiddleware;
 use App\Http\Middleware\ReplaceShortCodes;
+use App\Http\Middleware\SetLocale;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
 
@@ -23,6 +24,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         Route::aliasMiddleware('role', RoleMiddleware::class);
-        app('router')->pushMiddlewareToGroup('web', \App\Http\Middleware\ReplaceShortCodes::class);
+        app('router')->pushMiddlewareToGroup('web', ReplaceShortCodes::class);
+        app('router')->pushMiddlewareToGroup('web', SetLocale::class);
     }
 }

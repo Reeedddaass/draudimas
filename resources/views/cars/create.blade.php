@@ -6,7 +6,7 @@
     <div class="container mt-5">
         <div class="card">
             <div class="card-header bg-black text-white">
-                <h3 class="mb-0">Register New Car</h3>
+                <h3 class="mb-0">{{ __('Register New Car') }}</h3>
             </div>
             <div class="card-body">
                 <form action="{{ route('cars.store') }}" method="POST">
@@ -15,22 +15,22 @@
                     <input type="hidden" name="owner_id" value="{{ $owner_id }}">
 
                     <div class="mb-3">
-                        <label for="brand" class="form-label">Car Brand</label>
+                        <label for="brand" class="form-label">{{ __('Car Brand') }}</label>
                         <input type="text" class="form-control" name="brand" required>
                     </div>
 
                     <div class="mb-3">
-                        <label for="model" class="form-label">Car Model</label>
+                        <label for="model" class="form-label">{{ __('Car Model') }}</label>
                         <input type="text" class="form-control" name="model" required>
                     </div>
 
                     <div class="mb-3">
-                        <label for="reg_number" class="form-label">Registration Number</label>
+                        <label for="reg_number" class="form-label">{{ __('Registration Number') }}</label>
                         <input type="text" class="form-control" name="reg_number" required>
                     </div>
 
                     <div class="d-flex justify-content-between">
-                        <button type="submit" class="btn btn-success">Assign Car</button>
+                        <button type="submit" class="btn btn-success">{{ __('Assign Car') }}</button>
                         <a href="{{ route('owners.index') }}" class="btn btn-secondary">Cancel</a>
                     </div>
                 </form>
