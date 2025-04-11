@@ -27,5 +27,10 @@
     "Cancel": "Atšaukti",
     "Go Back": "Grįžti atgal",
     "Edit": "Redaguoti",
-    "Remove": "Pašalinti"
+    "Remove": "Pašalinti",
+    "Registration number is required.": "Registracijos numeris yra privalomas.",
+    "Registration number format is invalid. Use uppercase letters, three numbers and three letters (AAA111).": "Registracijos numerio formatas neteisingas. Naudokite didziasias raides (AAA111).",
+    "This registration number already exists.": "Toks registracijos numeris jau egzistuoja.",
+    "Car brand is required.": "Automobilio markė yra privaloma.",
+    "Car model is required.": "Automobilio modelis yra privalomas."
 }

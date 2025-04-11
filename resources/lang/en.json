@@ -27,5 +27,10 @@
     "Cancel": "Cancel",
     "Go Back": "Go Back",
     "Edit": "Edit",
-    "Remove": "Remove"
+    "Remove": "Remove",
+    "Registration number is required.": "Registration number is required.",
+    "Registration number format is invalid. Use uppercase letters, three numbers and three letters (AAA111).": "Registration number format is invalid. Use uppercase letters (AAA111).",
+    "This registration number already exists.": "This registration number already exists.",
+    "Car brand is required.": "Car brand is required.",
+    "Car model is required.": "Car model is required."
 }
