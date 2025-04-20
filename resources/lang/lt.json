@@ -32,5 +32,9 @@
     "Registration number format is invalid. Use uppercase letters, three numbers and three letters (AAA111).": "Registracijos numerio formatas neteisingas. Naudokite didziasias raides (AAA111).",
     "This registration number already exists.": "Toks registracijos numeris jau egzistuoja.",
     "Car brand is required.": "Automobilio markė yra privaloma.",
-    "Car model is required.": "Automobilio modelis yra privalomas."
+    "Car model is required.": "Automobilio modelis yra privalomas.",
+    "Photos": "Nuotraukos",
+    "Car Photos": "Automobilio nuotraukos",
+    "Upload Car Photos": "Įkelti automobilio nuotraukas",
+    "No Photos": "Nėra nuotraukų"
 }

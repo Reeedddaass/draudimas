@@ -6,6 +6,8 @@ use App\Models\Car;
 use App\Models\Owners;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreCarRequest;
+use App\Models\CarPhoto;
+use Illuminate\Support\Facades\Storage;
 
 class CarController extends Controller
 {
@@ -38,6 +40,13 @@ class CarController extends Controller
         $car->owner_id=$request->owner_id;
         $car->save();
 
+        if ($request->hasFile('photos')) {
+            foreach ($request->file('photos') as $photo) {
+                $path = $photo->store('car_photos', 'public');
+                $car->photos()->create(['photo_path' => $path]);
+            }
+        }
+
         return redirect()->route('owners.index');
     }
 
@@ -54,6 +63,7 @@ class CarController extends Controller
      */
     public function edit(Car $car)
     {
+        $car->load('photos');
         return view('cars.edit', compact('car'));
     }
 
@@ -67,6 +77,13 @@ class CarController extends Controller
         $car->model=$request->model;
         $car->save();
 
+        if ($request->hasFile('photos')) {
+            foreach ($request->file('photos') as $photo) {
+                $path = $photo->store('car_photos', 'public');
+                $car->photos()->create(['photo_path' => $path]);
+            }
+        }
+
         return redirect()->route('owners.index');
     }
 
@@ -77,5 +94,13 @@ class CarController extends Controller
     {
         $car->delete();
         return redirect()->route('owners.index');
+    }
+
+    public function destroyPhoto(CarPhoto $photo)
+    {
+        Storage::disk('public')->delete($photo->photo_path);
+        $photo->delete();
+
+        return back()->with('success', 'Photo deleted.');
     }
 }

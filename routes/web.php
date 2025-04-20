@@ -4,6 +4,7 @@ use App\Http\Controllers\OwnersController;
 use App\Http\Controllers\CarController;
 use App\Http\Controllers\ShortCodeController;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Session;
 
 Route::get('/', function () {
     return view('welcome');
@@ -31,8 +32,6 @@ Route::middleware(['auth'])->group(function () {
 
 Route::resource('shortcodes', ShortCodeController::class);
 
-use Illuminate\Support\Facades\Session;
-
 Route::get('/lang/{locale}', function ($locale) {
     if (in_array($locale, ['en', 'lt'])) {
         Session::put('locale', $locale);
@@ -40,3 +39,4 @@ Route::get('/lang/{locale}', function ($locale) {
     return redirect()->back();
 })->name('lang.switch');
 
+Route::delete('/car-photos/{photo}', [CarController::class, 'destroyPhoto'])->name('cars.photos.destroy');

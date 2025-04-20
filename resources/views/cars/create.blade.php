@@ -9,7 +9,7 @@
                 <h3 class="mb-0">{{ __('Register New Car') }}</h3>
             </div>
             <div class="card-body">
-                <form action="{{ route('cars.store') }}" method="POST">
+                <form action="{{ route('cars.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
 
                     <input type="hidden" name="owner_id" value="{{ $owner_id }}">
@@ -38,6 +38,15 @@
 
                         @error('reg_number')
                             <div class="text-danger">{{ $message }}</div>
+                        @enderror
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="photos" class="form-label">{{ __('Upload Car Photos') }}</label>
+                        <input type="file" class="form-control" name="photos[]" multiple accept="image/*">
+
+                        @error('photos.*')2
+                        <div class="text-danger">{{ $message }}</div>
                         @enderror
                     </div>
 

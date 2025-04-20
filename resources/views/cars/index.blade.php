@@ -7,15 +7,30 @@
         <table class="table table-striped table-hover table-bordered">
             <thead>
             <tr class="table-dark">
+                <th>{{ __('Photos') }}</th>
                 <th>{{ __('Registration Number') }}</th>
                 <th>{{ __('Car Brand') }}</th>
                 <th>{{ __('Car Model') }}</th>
                 <th>{{ __('Owner') }}</th>
+                <th></th>
             </tr>
             </thead>
             <tbody>
             @foreach($cars as $car)
                 <tr>
+                    <td class="text-center">
+                        @if($car->photos->count())
+                            <div class="d-flex flex-wrap justify-content-center" style="gap: 5px;">
+                                @foreach($car->photos as $photo)
+                                    <img src="{{ asset('storage/' . $photo->photo_path) }}"
+                                         class="img-thumbnail"
+                                         style="max-height: 60px; width: auto;">
+                                @endforeach
+                            </div>
+                        @else
+                            <span class="text-muted small">{{ __('No Photos') }}</span>
+                        @endif
+                    </td>
                     <td>{{ $car->reg_number }}</td>
                     <td>{{ $car->brand }}</td>
                     <td>{{ $car->model }}</td>
@@ -25,6 +40,11 @@
                         @else
                             <span class="text-muted">{{ __('No Owner') }}</span>
                         @endif
+                    </td>
+                    <td class="text-center">
+                        <a href="{{ route('cars.edit', $car) }}" class="btn btn-sm btn-outline-primary">
+                            {{ __('Edit') }}
+                        </a>
                     </td>
                 </tr>
             @endforeach
