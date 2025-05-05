@@ -82,4 +82,9 @@ class OwnersController extends Controller
         $owner->delete();
         return redirect()->route('owners.index');
     }
+
+    public function __construct()
+    {
+        $this->authorizeResource(\App\Models\Owners::class, 'owners');
+    }
 }

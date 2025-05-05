@@ -42,9 +42,11 @@
                         @endif
                     </td>
                     <td class="text-center">
-                        <a href="{{ route('cars.edit', $car) }}" class="btn btn-sm btn-outline-primary">
-                            {{ __('Edit') }}
-                        </a>
+                        @can('update', $car)
+                            <a href="{{ route('cars.edit', $car) }}" class="btn btn-sm btn-outline-primary">
+                                {{ __('Edit') }}
+                            </a>
+                        @endcan
                     </td>
                 </tr>
             @endforeach

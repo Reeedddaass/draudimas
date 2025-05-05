@@ -10,4 +10,9 @@ class Owners extends Model
     {
         return $this->hasMany(Car::class, 'owner_id');
     }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

@@ -103,4 +103,9 @@ class CarController extends Controller
 
         return back()->with('success', 'Photo deleted.');
     }
+
+    public function __construct()
+    {
+        $this->authorizeResource(\App\Models\Car::class, 'car');
+    }
 }

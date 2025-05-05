@@ -41,7 +41,9 @@
                                             @auth
                                                 @if(auth()->user()->role === 'editor')
 
-                                                    <a href="{{ route('cars.edit', $car->id) }}" class="btn btn-warning btn-sm mx-2">{{ __('Edit') }}</a>
+                                                    @can('update', $car)
+                                                        <a href="{{ route('cars.edit', $car->id) }}" class="btn btn-warning btn-sm mx-2">{{ __('Edit') }}</a>
+                                                    @endcan
 
                                                     <form action="{{ route('cars.destroy', $car->id) }}" method="POST">
                                                         @csrf

@@ -45,4 +45,14 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    public function owners()
+    {
+        return $this->hasMany(\App\Models\Owners::class);
+    }
+
+    public function cars()
+    {
+        return $this->hasManyThrough(\App\Models\Car::class, \App\Models\Owners::class);
+    }
 }
