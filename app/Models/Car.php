@@ -15,4 +15,6 @@ class Car extends Model
     {
         return $this->hasMany(CarPhoto::class);
     }
+
+    protected $fillable = ['brand', 'model', 'reg_number', 'owner_id'];
 }
